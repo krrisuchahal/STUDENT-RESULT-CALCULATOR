@@ -1,24 +1,7 @@
-"""
-main.py
-Student Result & Grade Calculator
-
-A simple command-line program that takes a student's marks in 5 subjects,
-calculates the total, percentage, and grade, and stores the result so it
-can be viewed or searched later.
-
-Concepts used: variables, if-elif-else, operators (+, -, *, /, >=),
-lists, dictionaries, loops, and basic file handling.
-"""
-
 RESULTS_FILE = "data/results.txt"
-
-# students is a list of dictionaries, one dictionary per student
 students = []
-
-
 def load_students():
-    """Load saved student results from the text file into the students list."""
-    try:
+  try:
         file = open(RESULTS_FILE, "r")
         for line in file:
             line = line.strip()
@@ -41,7 +24,6 @@ def load_students():
 
 
 def save_students():
-    """Write the students list back to the text file."""
     file = open(RESULTS_FILE, "w")
     for s in students:
         marks_str = str(s["marks"][0]) + "|" + str(s["marks"][1]) + "|" + str(s["marks"][2]) + "|" \
@@ -53,7 +35,6 @@ def save_students():
 
 
 def calculate_grade(percentage):
-    """Return a grade letter based on the percentage, using if-elif."""
     if percentage >= 90:
         grade = "A+"
     elif percentage >= 80:
@@ -72,8 +53,6 @@ def calculate_grade(percentage):
 
 
 def calculate_status(marks, percentage):
-    """A student fails if overall percentage is below 40, or if any single
-    subject is below 33 (common pass criteria used in many colleges)."""
     status = "Pass"
 
     if percentage < 40:
@@ -212,9 +191,9 @@ def main():
     load_students()
 
     while True:
-        print("\n========================================")
-        print("     STUDENT RESULT & GRADE CALCULATOR")
-        print("========================================")
+        print("\n=")
+        print("STUDENT RESULT & GRADE CALCULATOR")
+        print("=")
         print("1. Add Student Result")
         print("2. View All Results")
         print("3. Search Student by Roll Number")
